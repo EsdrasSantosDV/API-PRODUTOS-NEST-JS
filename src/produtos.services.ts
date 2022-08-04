@@ -11,26 +11,33 @@ export class ProdutosService{
 
     }
 
-    obterTodos():Produto[]{
-        return this.produtos;
+
+    //PROMESSA DE PRODUTO
+    async obterTodos():Promise <Produto[]>{
+        return this.produtoModel.findAll();
     }
 
-    obterUm(id:number):Produto{
-        return this.produtos[0];
+    async obterUm(id:number):Promise<Produto>{
+        return this.produtoModel.findByPk(id);
     }
 
-    criar(produto:Produto)
+    async criar(produto:Produto)
     {
-        this.produtos.push(produto);
+        this.produtoModel.create(produto);
     }
 
-    alterar(produto: Produto):Produto{
-        return produto;
+    async alterar(produto: Produto):Promise<[number,Produto[]]>{
+        return  this.produtoModel.update(produto,{
+            where:{
+                id:produto.id
+            }
+        });
     }
 
-    apagar(id:number)
+    async apagar(id:number)
     {
-        this.produtos.pop();
+        const produto: Produto = await this.obterUm(id);
+        produto.destroy();
     }
 
 }

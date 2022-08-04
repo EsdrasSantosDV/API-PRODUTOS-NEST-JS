@@ -11,31 +11,31 @@ export class ProdutosController{
     //DECORETORS
     //QUANDO TIVER UMA REQUISIÇÃO DO TIPO GET
     @Get()
-    obterTodos():Produto[]{
+    async obterTodos():Promise<Produto[]>{
         return this.produtosService.obterTodos();
     }
 
     //PARAMETRO
     @Get(':id')
-    obterUm(@Param()params):Produto
+    async obterUm(@Param()params):Promise<Produto>
     {
         return this.produtosService.obterUm(params.id);
     }
 
     @Post()
-    criarproduto(@Body() produto:Produto){
+    async criarproduto(@Body() produto:Produto){
         
         this.produtosService.criar(produto);
     }
 
     @Put()
-    alterarproduto(@Body() produto:Produto):Produto{
+    async alterarproduto(@Body() produto:Produto):Promise<[number,Produto[]]>{
        
         return this.produtosService.alterar(produto);
     }
 
     @Delete(':id')
-    apagar(@Param()params){
+    async apagar(@Param()params){
         this.produtosService.apagar(params.id)
     }
 }
