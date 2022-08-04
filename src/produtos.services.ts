@@ -1,14 +1,15 @@
 import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/sequelize";
 import { Produto } from "./produtos.models";
 @Injectable()
 export class ProdutosService{
-    produtos: Produto[]=
-    [
-        new Produto("LIV01","LIVRO TDD E BDD na prática", 29.90),
-        new Produto("LIV02","LIVRO INICIANDO COM FLUTTER",39.94),
-        new Produto("LIV03","INTELIGENCIA ARTIFICIAL COMO SERVICO",34.42),
+    constructor(
 
-    ];
+        @InjectModel(Produto)
+        private produtoModel:typeof Produto
+    ){
+
+    }
 
     obterTodos():Produto[]{
         return this.produtos;
