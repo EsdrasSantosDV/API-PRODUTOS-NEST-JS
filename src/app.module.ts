@@ -3,9 +3,9 @@ import { ConfigModule } from '@nestjs/config/dist/config.module';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProdutosController } from './produtos.controller';
-import { Produto } from './produtos.models';
-import { ProdutosService } from './produtos.services';
+import { ProdutosController } from './controllers/produtos.controller';
+import { Produto } from './models/produtos.models';
+import { ProdutosService } from './services/produtos.services';
 
 
 //PRECISA COLOCAR NO APP.MODULE AS CONTROLLERS E OS SERVICES

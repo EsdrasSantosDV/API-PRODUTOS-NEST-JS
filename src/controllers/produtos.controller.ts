@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { Produto } from "./produtos.models";
-import { ProdutosService } from "./produtos.services";
+import { Produto } from "../models/produtos.models";
+import { ProdutosService } from "../services/produtos.services";
 @Controller('produtos')
 export class ProdutosController{
     constructor(private produtosService:ProdutosService){
