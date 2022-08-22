@@ -10,12 +10,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { FiltrodeExcecaoHttp } from './common/filtros/filtro-de-excecao-http.filter';
+import { ProdutosModule } from './produtos/produtos.module';
 
 
 //PRECISA COLOCAR NO APP.MODULE AS CONTROLLERS E OS SERVICES
 @Module({
   imports: [
-    UsuarioModule
+    UsuarioModule,
+    ProdutosModule
   ],
   controllers: [AppController],
   providers: [AppService,{provide: APP_INTERCEPTOR,useClass: ClassSerializerInterceptor
